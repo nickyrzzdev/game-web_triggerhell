@@ -22,3 +22,6 @@ export const OTTO_RADIUS = 16
 export const OTTO_HIT_RADIUS = 22
 export const PLAYER_COLLIDER_WIDTH = 28
 export const PLAYER_COLLIDER_HEIGHT = 36
+export const BURST_SIZE = 3
+export const BURST_SHOT_INTERVAL_MS = 100
+export const BURST_COOLDOWN_MS = 1200

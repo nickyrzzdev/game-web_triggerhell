@@ -7,6 +7,7 @@ import {
   PLAYER_MAX_HEALTH,
   PLAYER_SPEED,
 } from '../config/constants'
+import { BurstPistol } from '../weapons/BurstPistol'
 import { Pistol } from '../weapons/Pistol'
 import { Enemy } from './Enemy'
 import {
@@ -20,6 +21,8 @@ type PlayerState = 'idle' | 'walk' | 'hurt' | 'dead'
 
 export class Player extends ex.Actor {
   private readonly pistol = new Pistol()
+  private readonly burstPistol = new BurstPistol()
+  private activeWeapon: 'pistol' | 'burst' = 'pistol'
   private isLeftMouseDown = false
   private animations!: SnoopyAnimations
   private state: PlayerState = 'idle'
@@ -44,6 +47,7 @@ export class Player extends ex.Actor {
 
   override onInitialize(): void {
     this.animations = createSnoopyAnimations()
+    this.scene?.events.on('deactivate', () => this.burstPistol.cancel())
     this.animations.idle.reset()
     this.animations.walk.reset()
     this.animations.hurt.reset()
@@ -136,6 +140,7 @@ export class Player extends ex.Actor {
         break
       case 'dead':
         this.vel = ex.Vector.Zero
+        this.burstPistol.cancel()
         this.scene?.engine.goToScene('gameover')
         break
     }
@@ -152,6 +157,14 @@ export class Player extends ex.Actor {
   }
 
   private handleShooting(engine: ex.Engine): void {
+    // TESTE: remover se a rajada for descartada
+    if (engine.input.keyboard.wasPressed(ex.Keys.Key1)) {
+      this.activeWeapon = 'pistol'
+      this.burstPistol.cancel()
+    } else if (engine.input.keyboard.wasPressed(ex.Keys.Key2)) {
+      this.activeWeapon = 'burst'
+    }
+
     const pointers = engine.input.pointers
     const leftMousePressed = pointers.currentFrameDown.some(
       (event) =>
@@ -172,7 +185,19 @@ export class Player extends ex.Actor {
       this.isLeftMouseDown = false
     }
 
-    if (leftMousePressed || this.isLeftMouseDown) {
+    const triggerDown = leftMousePressed || this.isLeftMouseDown
+
+    if (this.activeWeapon === 'burst') {
+      const targetPos = engine.screen.screenToWorldCoordinates(
+        pointers.primary.lastScreenPos.clone(),
+      )
+      this.burstPistol.update(
+        engine.currentScene,
+        this.pos,
+        targetPos,
+        triggerDown,
+      )
+    } else if (triggerDown) {
       const targetPos = engine.screen.screenToWorldCoordinates(
         pointers.primary.lastScreenPos.clone(),
       )
