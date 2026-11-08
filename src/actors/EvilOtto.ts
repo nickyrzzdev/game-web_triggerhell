@@ -5,6 +5,7 @@ import { createEvilOttoSprite } from '../assets/sprites'
 import type { Room } from '../world/RoomGenerator'
 import { Bullet } from './Bullet'
 import { Player } from './Player'
+import { sounds } from '../sounds'
 
 export class EvilOtto extends ex.Actor {
   private state = 'dormant'
@@ -43,6 +44,7 @@ export class EvilOtto extends ex.Actor {
       if (this.elapsed >= OTTO_SPAWN_DELAY_MS) {
         this.state = 'spawning'
         this.elapsed = 0
+        sounds.ottoWarning.play()
       }
     }
     if (this.state === 'spawning') {

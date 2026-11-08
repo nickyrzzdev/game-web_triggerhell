@@ -7,6 +7,7 @@ import { INITIAL_SCORE, PLAYER_MAX_HEALTH } from '../config/constants'
 import { generateRoom, nextEntrySide } from '../world/RoomGenerator'
 import type { Room, Side } from '../world/RoomGenerator'
 import { buildRoomTileMap } from '../world/buildRoom'
+import { sounds } from '../sounds'
 
 export class GameScene extends ex.Scene {
   private level = 1
@@ -23,21 +24,21 @@ export class GameScene extends ex.Scene {
   private evilOtto?: EvilOtto
 
   override onActivate(): void {
-    this.clear()
-    this.level = 1
-    this.score = INITIAL_SCORE
-    this.room = undefined
-    this.player = undefined
-    this.hud = undefined
-    this.tileMap = undefined
-    this.enemies = []
-    this.lockedDoors = []
-    this.portals = []
-    this.exitsOpen = false
-    this.changingRoom = false
-    this.evilOtto = undefined
-    this.createRoom('left')
-  }
+  this.clear()
+  this.level = 1
+  this.score = INITIAL_SCORE
+  this.room = undefined
+  this.player = undefined
+  this.hud = undefined
+  this.tileMap = undefined
+  this.enemies = []
+  this.lockedDoors = []
+  this.portals = []
+  this.exitsOpen = false
+  this.changingRoom = false
+  this.evilOtto = undefined
+  this.createRoom('left')
+}
 
   override onPreUpdate(_engine: ex.Engine, _elapsed: number): void {
     if (!this.player || !this.room) {
@@ -60,6 +61,7 @@ export class GameScene extends ex.Scene {
   )
 
   if (this.enemies.length === 0) {
+    sounds.roomClear.play()
     this.onRoomCleared()
   }
 }
@@ -98,8 +100,13 @@ export class GameScene extends ex.Scene {
     this.addLockedDoors(room)
 
     this.createEnemies(room)
-    this.add(this.evilOtto ??= new EvilOtto(this.player!))
-    this.evilOtto.onWaveStart(room)
+
+if (!this.evilOtto) {
+  this.evilOtto = new EvilOtto(this.player!)
+  this.add(this.evilOtto)
+}
+
+this.evilOtto.onWaveStart(room)
   }
 
 private getEnemySpawnCells(
@@ -192,7 +199,7 @@ private getEnemySpawnCells(
 },
     })
 
-    // Quando esse inimigo morrer:
+    
     enemy.on('kill', () => {
       this.onEnemyKilled(enemy)
     })

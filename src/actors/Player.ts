@@ -16,6 +16,7 @@ import {
   SNOOPY_GRAPHIC_OFFSET_Y,
 } from '../assets/sprites'
 import type { SnoopyAnimations } from '../assets/sprites'
+import { sounds } from '../sounds'
 
 type PlayerState = 'idle' | 'walk' | 'hurt' | 'dead'
 
@@ -142,6 +143,7 @@ export class Player extends ex.Actor {
         this.vel = ex.Vector.Zero
         this.burstPistol.cancel()
         this.scene?.engine.goToScene('gameover')
+        sounds.gameOver.play()
         break
     }
   }
@@ -152,6 +154,7 @@ export class Player extends ex.Actor {
     }
 
     this.lives -= 1
+    sounds.playerHurt.play()
     this.onLivesChanged?.(this.lives)
     this.setState(this.lives === 0 ? 'dead' : 'hurt')
   }

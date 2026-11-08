@@ -5,6 +5,7 @@ import { GAME_HEIGHT, GAME_WIDTH } from './config/constants'
 import { GameOverScene } from './scenes/GameOverScene'
 import { GameScene } from './scenes/GameScene'
 import { MenuScene } from './scenes/MenuScene'
+import { sounds } from './sounds'
 
 const game = new ex.Engine({
   width: GAME_WIDTH,
@@ -24,5 +25,7 @@ const game = new ex.Engine({
 game.addScene('menu', new MenuScene())
 game.addScene('game', new GameScene())
 game.addScene('gameover', new GameOverScene())
+
+loader.addResources(Object.values(sounds))
 
 game.start(loader).then(() => game.goToScene('menu'))

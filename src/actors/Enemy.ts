@@ -6,6 +6,7 @@ import { createFireState, stepEnemyFire } from '../systems/enemyFire';
 import { findPath } from '../world/RoomGenerator';
 import type { Room } from '../world/RoomGenerator';
 import { enemy } from '../config/collisionGroups';
+import { sounds } from '../sounds'
 
 
 export interface EnemyOptions {
@@ -64,8 +65,12 @@ export class Enemy extends Actor {
   this.health -= damage
 
   if (this.health <= 0) {
+    sounds.enemyDeath.play()
     this.kill()
+    return
   }
+
+  sounds.enemyHit.play()
 }
 
   override onPreUpdate(_engine: Engine, delta: number): void {
@@ -150,6 +155,7 @@ export class Enemy extends Actor {
     b.on('kill', () => this.bullets.delete(b))
 
     this.scene.add(b)
+    sounds.enemyShoot.play()
   }
 }
 }
