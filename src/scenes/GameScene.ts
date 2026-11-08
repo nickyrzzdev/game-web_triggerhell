@@ -1,5 +1,6 @@
 import * as ex from 'excalibur'
 import { Enemy } from '../actors/Enemy'
+import { EvilOtto } from '../actors/EvilOtto'
 import { Player } from '../actors/Player'
 import { Hud } from '../ui/Hud'
 import { INITIAL_SCORE, PLAYER_MAX_HEALTH } from '../config/constants'
@@ -19,6 +20,7 @@ export class GameScene extends ex.Scene {
   private portals: ex.Actor[] = []
   private exitsOpen = false
   private changingRoom = false
+  private evilOtto?: EvilOtto
   
 
   override onActivate(): void {
@@ -34,6 +36,7 @@ export class GameScene extends ex.Scene {
     this.portals = []
     this.exitsOpen = false
     this.changingRoom = false
+    this.evilOtto = undefined
     this.createRoom('left')
   }
 
@@ -63,6 +66,7 @@ export class GameScene extends ex.Scene {
 }
 
   onRoomCleared(): void {
+    this.evilOtto?.onWaveCleared()
     this.openExits()
   }
 
@@ -95,6 +99,8 @@ export class GameScene extends ex.Scene {
     this.addLockedDoors(room)
     
     this.createEnemies(room)
+    this.add(this.evilOtto ??= new EvilOtto(this.player!))
+    this.evilOtto.onWaveStart(room)
   }
 
 private getEnemySpawnCells(
