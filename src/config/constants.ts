@@ -11,3 +11,5 @@ export const SHOOT_COOLDOWN_MS = 1000
 export const ROBOT_SPEED = 100
 export const PLAYER_MAX_HEALTH = 3
 export const INITIAL_SCORE = 0
+export const PLAYER_COLLIDER_WIDTH = 28
+export const PLAYER_COLLIDER_HEIGHT = 36
