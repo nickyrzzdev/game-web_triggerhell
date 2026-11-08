@@ -11,6 +11,7 @@ const spriteImages = {
   bone: new ImageSource(url('sprites/bone.png')),
   evilOtto: new ImageSource(url('sprites/evil_otto.png')),
   enemyBullet: new ImageSource(url('sprites/enemy_bullet.png')),
+  heartFull: new ImageSource(url('sprites/heart_full_32.png')),
   floor: new ImageSource(url('tiles/floor.png')),
   wall: new ImageSource(url('tiles/wall.png')),
   torch1: new ImageSource(url('tiles/torch_1.png')),
@@ -123,6 +124,7 @@ let wallSprite: Sprite | undefined
 let boneSprite: Sprite | undefined
 let evilOttoSprite: Sprite | undefined
 let enemyBulletSprite: Sprite | undefined
+let heartFullSprite: Sprite | undefined
 export const createWallSprite = (): Sprite => (wallSprite ??= spriteImages.wall.toSprite())
 export const createBoneSprite = (): Sprite =>
   (boneSprite ??= spriteImages.bone.toSprite({ destSize: { width: 16, height: 8 } }))
@@ -130,6 +132,10 @@ export const createEvilOttoSprite = (): Sprite =>
   (evilOttoSprite ??= spriteImages.evilOtto.toSprite({ destSize: { width: 48, height: 72 } }))
 export const createEnemyBulletSprite = (): Sprite =>
   (enemyBulletSprite ??= spriteImages.enemyBullet.toSprite())
+export const createHeartFullSprite = (): Sprite =>
+  (heartFullSprite ??= spriteImages.heartFull.toSprite({
+    destSize: { width: TILE_SIZE / 2, height: TILE_SIZE / 2 },
+  }))
 
 let torchSprites: Sprite[] | undefined
 export function createTorchAnimation(): Animation {

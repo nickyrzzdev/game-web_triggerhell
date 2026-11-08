@@ -3,11 +3,12 @@ import { Enemy } from '../actors/Enemy'
 import { EvilOtto } from '../actors/EvilOtto'
 import { Player } from '../actors/Player'
 import { Hud } from '../ui/Hud'
-import { INITIAL_SCORE, PLAYER_MAX_HEALTH } from '../config/constants'
+import { HEART_SPAWN_EVERY_PHASES, INITIAL_SCORE, PLAYER_MAX_HEALTH } from '../config/constants'
 import { generateRoom, nextEntrySide } from '../world/RoomGenerator'
 import type { Room, Side } from '../world/RoomGenerator'
 import { buildRoomTileMap } from '../world/buildRoom'
 import { sounds } from '../sounds'
+import { spawnHeartPickups } from '../systems/heartSpawner'
 
 export class GameScene extends ex.Scene {
   private level = 1
@@ -19,6 +20,7 @@ export class GameScene extends ex.Scene {
   private enemies: Enemy[] = []
   private lockedDoors: ex.Actor[] = []
   private portals: ex.Actor[] = []
+  private heartPickups: ex.Actor[] = []
   private exitsOpen = false
   private changingRoom = false
   private evilOtto?: EvilOtto
@@ -34,6 +36,7 @@ export class GameScene extends ex.Scene {
   this.enemies = []
   this.lockedDoors = []
   this.portals = []
+  this.heartPickups = []
   this.exitsOpen = false
   this.changingRoom = false
   this.evilOtto = undefined
@@ -100,6 +103,15 @@ export class GameScene extends ex.Scene {
     this.addLockedDoors(room)
 
     this.createEnemies(room)
+    if (this.level % HEART_SPAWN_EVERY_PHASES === 0 && this.player) {
+      const spawnedHearts = spawnHeartPickups(this, room, this.player, this.enemies)
+      this.heartPickups.push(...spawnedHearts)
+      for (const heart of spawnedHearts) {
+        heart.on('kill', () => {
+          this.heartPickups = this.heartPickups.filter((pickup) => pickup !== heart)
+        })
+      }
+    }
 
 if (!this.evilOtto) {
   this.evilOtto = new EvilOtto(this.player!)
@@ -295,6 +307,10 @@ private getEnemySpawnCells(
 
     this.changingRoom = true
     this.level += 1
+    for (const heart of [...this.heartPickups]) {
+      heart.kill()
+    }
+    this.heartPickups = []
     this.tileMap?.kill()
     this.tileMap = undefined
     for (const door of this.lockedDoors) {

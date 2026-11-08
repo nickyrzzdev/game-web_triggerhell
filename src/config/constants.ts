@@ -25,3 +25,7 @@ export const PLAYER_COLLIDER_HEIGHT = 36
 export const BURST_SIZE = 3
 export const BURST_SHOT_INTERVAL_MS = 100
 export const BURST_COOLDOWN_MS = 1200
+export const HEART_SPAWN_EVERY_PHASES = 3
+export const HEART_SPAWN_COUNT = 2
+export const HEART_HEAL_AMOUNT = 1
+export const HEART_MIN_DISTANCE_FROM_PLAYER_TILES = 3

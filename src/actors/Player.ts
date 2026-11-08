@@ -159,6 +159,21 @@ export class Player extends ex.Actor {
     this.setState(this.lives === 0 ? 'dead' : 'hurt')
   }
 
+  heal(amount: number): boolean {
+    if (this.state === 'dead' || amount <= 0) {
+      return false
+    }
+
+    const healedLives = Math.min(PLAYER_MAX_HEALTH, this.lives + amount)
+    if (healedLives === this.lives) {
+      return false
+    }
+
+    this.lives = healedLives
+    this.onLivesChanged?.(this.lives)
+    return true
+  }
+
   private handleShooting(engine: ex.Engine): void {
     // TESTE: remover se a rajada for descartada
     if (engine.input.keyboard.wasPressed(ex.Keys.Key1)) {
