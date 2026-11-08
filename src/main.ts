@@ -15,6 +15,9 @@ const game = new ex.Engine({
   physics: {
     solver: ex.SolverStrategy.Arcade,
     gravity: ex.vec(0, 0),
+    colliders: {
+      compositeStrategy: 'separate',
+    },
   },
 })
 

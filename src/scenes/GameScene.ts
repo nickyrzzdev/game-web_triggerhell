@@ -21,7 +21,6 @@ export class GameScene extends ex.Scene {
   private exitsOpen = false
   private changingRoom = false
   private evilOtto?: EvilOtto
-  
 
   override onActivate(): void {
     this.clear()
@@ -97,7 +96,7 @@ export class GameScene extends ex.Scene {
     this.hud?.setLevel(this.level)
 
     this.addLockedDoors(room)
-    
+
     this.createEnemies(room)
     this.add(this.evilOtto ??= new EvilOtto(this.player!))
     this.evilOtto.onWaveStart(room)
@@ -119,12 +118,12 @@ private getEnemySpawnCells(
   for (let row = 1; row < room.rows - 1; row++) {
     for (let col = 1; col < room.cols - 1; col++) {
 
-  
+
       if (room.walls[row][col]) {
         continue
       }
 
-      
+
       const distance = Math.hypot(
         col - playerCol,
         row - playerRow,
@@ -138,7 +137,7 @@ private getEnemySpawnCells(
     }
   }
 
-  
+
   for (let i = candidates.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
 

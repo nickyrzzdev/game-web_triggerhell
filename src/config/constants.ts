@@ -20,3 +20,5 @@ export const OTTO_ENRAGE_AFTER_MS = 15000
 export const OTTO_CONTACT_DAMAGE = 2
 export const OTTO_RADIUS = 16
 export const OTTO_HIT_RADIUS = 22
+export const PLAYER_COLLIDER_WIDTH = 28
+export const PLAYER_COLLIDER_HEIGHT = 36

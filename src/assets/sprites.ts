@@ -1,5 +1,5 @@
 import { Animation, AnimationStrategy, ImageSource, Sprite, SpriteSheet } from 'excalibur'
-import { TILE_SIZE } from '../config/constants'
+import { PLAYER_COLLIDER_HEIGHT, PLAYER_COLLIDER_WIDTH, TILE_SIZE } from '../config/constants'
 
 // BASE_URL é obrigatório: o deploy no GitHub Pages roda em /<repo>/, não em /
 const url = (p: string) => `${import.meta.env.BASE_URL}assets/${p}`
@@ -22,7 +22,7 @@ export const allSpriteImages: ImageSource[] = Object.values(spriteImages)
 
 // Snoopy olha para a direita; use graphics.flipHorizontal para inverter.
 export const SNOOPY_CELL = { width: 32, height: 40 }
-export const SNOOPY_COLLIDER = { width: 18, height: 26 }
+export const SNOOPY_COLLIDER = { width: PLAYER_COLLIDER_WIDTH, height: PLAYER_COLLIDER_HEIGHT }
 export const SNOOPY_GRAPHIC_OFFSET_Y = -(SNOOPY_CELL.height - SNOOPY_COLLIDER.height) / 2
 
 const SNOOPY_FRAMES = {
