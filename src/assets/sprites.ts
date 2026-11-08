@@ -9,6 +9,7 @@ const spriteImages = {
   werewolves: new ImageSource(url('sprites/werewolves.png')),
   sharkmen: new ImageSource(url('sprites/sharkmen.png')),
   bone: new ImageSource(url('sprites/bone.png')),
+  evilOtto: new ImageSource(url('sprites/evil_otto.png')),
   enemyBullet: new ImageSource(url('sprites/enemy_bullet.png')),
   floor: new ImageSource(url('tiles/floor.png')),
   wall: new ImageSource(url('tiles/wall.png')),
@@ -120,10 +121,13 @@ export function createFloorSprites(): Sprite[] {
 }
 let wallSprite: Sprite | undefined
 let boneSprite: Sprite | undefined
+let evilOttoSprite: Sprite | undefined
 let enemyBulletSprite: Sprite | undefined
 export const createWallSprite = (): Sprite => (wallSprite ??= spriteImages.wall.toSprite())
 export const createBoneSprite = (): Sprite =>
   (boneSprite ??= spriteImages.bone.toSprite({ destSize: { width: 16, height: 8 } }))
+export const createEvilOttoSprite = (): Sprite =>
+  (evilOttoSprite ??= spriteImages.evilOtto.toSprite({ destSize: { width: 48, height: 72 } }))
 export const createEnemyBulletSprite = (): Sprite =>
   (enemyBulletSprite ??= spriteImages.enemyBullet.toSprite())
 
