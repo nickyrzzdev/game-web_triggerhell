@@ -83,6 +83,18 @@ export class MenuScene extends ex.Scene {
         }),
       }),
     )
+    this.add(
+      new ex.Label({
+        text: 'Modo de disparo: teclas 1 e 2',
+        pos: ex.vec(GAME_WIDTH / 2, 344),
+        color: ex.Color.fromHex('#cbd5e1'),
+        font: new ex.Font({
+          size: 14,
+          textAlign: ex.TextAlign.Center,
+          baseAlign: ex.BaseAlign.Middle,
+        }),
+      }),
+    )
 
     this.input.pointers.primary.on('down', () => this.engine.goToScene('game'))
     this.input.keyboard.on('press', () => this.engine.goToScene('game'))
