@@ -2,9 +2,9 @@
 
 > Top-down shooter 2D em HTML5 inspirado em **Berzerk** e **Enter the Gungeon**, feito com **Excalibur.js** e **TypeScript**.
 
-[![Deploy](https://github.com/nickyrzzdev/game-web_triggerhell/actions/workflows/deploy.yml/badge.svg)](https://github.com/nickyrzzdev/game-web_triggerhell/actions)
+[![Deploy](https://github.com/nickyrzzdev/snoopyscape/actions/workflows/deploy.yml/badge.svg)](https://github.com/nickyrzzdev/snoopyscape/actions)
 
-🎮 **Jogue online:** https://nickyrzzdev.github.io/game-web_triggerhell/
+🎮 **Jogue online:** https://nickyrzzdev.github.io/snoopyscape/
 
 ---
 
@@ -64,8 +64,8 @@ Legenda: ✅ pronto · 🚧 em desenvolvimento · 📝 planejado
 
 ```bash
 # 1. Clonar
-git clone https://github.com/nickyrzzdev/game-web_snoopyscape.git
-cd game-web_snoopyscape
+git clone https://github.com/nickyrzzdev/snoopyscape.git
+cd snoopyscape
 
 # 2. Instalar dependências
 npm install
@@ -140,7 +140,7 @@ Antes de abrir o PR, rode `npm run build` para garantir que o projeto compila.
 
 O deploy é automático: a cada merge na `main`, o **GitHub Actions** faz o build e publica no **GitHub Pages**.
 
-> No `vite.config.ts`, mantenha `base: '/game-web_triggerhell/'` para os assets carregarem corretamente no Pages.
+> No `vite.config.ts`, mantenha `base: '/snoopyscape/'` para os assets carregarem corretamente no Pages.
 
 ---
 
