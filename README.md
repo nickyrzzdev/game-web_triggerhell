@@ -1,4 +1,4 @@
-### 🐾 SnoopyScape
+###### 🐾 SnoopyScape
 
 > Um jogo de tiro 2D top-down em HTML5, inspirado em **Berzerk** e **Enter the Gungeon**, desenvolvido com **Excalibur.js** e **TypeScript**.
 
