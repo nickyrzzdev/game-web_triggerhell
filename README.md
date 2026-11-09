@@ -1,152 +1,224 @@
-# 🔫 SnoopyScape
+#🐾 SnoopyScape
 
-> Top-down shooter 2D em HTML5 inspirado em **Berzerk** e **Enter the Gungeon**, feito com **Excalibur.js** e **TypeScript**.
+> Um jogo de tiro 2D top-down em HTML5, inspirado em **Berzerk** e **Enter the Gungeon**, desenvolvido com **Excalibur.js** e **TypeScript**.
 
-[![Deploy](https://github.com/nickyrzzdev/snoopyscape/actions/workflows/deploy.yml/badge.svg)](https://github.com/nickyrzzdev/snoopyscape/actions)
+[![Deploy](https://github.com/nickyrzzdev/snoopyscape/actions/workflows/deploy.yml/badge.svg)](https://github.com/nickyrzzdev/snoopyscape/actions/workflows/deploy.yml)
 
-🎮 **Jogue online:** https://nickyrzzdev.github.io/snoopyscape/
-
----
-
-## 📖 Sobre o jogo
-
-Você está preso num labirinto cheio de robôs. Atire para sobreviver, esquive no último segundo e não fique parado por muito tempo: um chefe indestrutível, inspirado no **Evil Otto** do clássico Berzerk, aparece para te caçar.
-
-O jogo tem a tensão dos labirintos e robôs perseguidores de **Berzerk**
-
-Projeto desenvolvido como **trabalho acadêmico** por uma equipe de 3 pessoas, com foco em boas práticas de versionamento (branches, Pull Requests e GitHub Projects) e deploy automático.
-
-**Referências de gameplay**
-- Berzerk: https://www.youtube.com/watch?v=ELE24jchei4
-- Enter the Gungeon: https://www.youtube.com/watch?v=U5r6mUaKnDY
+🎮 **Jogue:** [SnoopyScape — GitHub Pages](https://nickyrzzdev.github.io/snoopyscape/)
 
 ---
 
-## ✨ Funcionalidades
+## Sobre o projeto
 
-Legenda: ✅ pronto · 🚧 em desenvolvimento · 📝 planejado
+SnoopyScape é um jogo 2D de ação e sobrevivência no qual o jogador controla Snoopy, um personagem que precisa explorar salas, enfrentar inimigos, desviar de ataques e sobreviver o máximo possível.
+
+O jogo utiliza uma perspectiva top-down, com salas geradas proceduralmente, inimigos com diferentes comportamentos, sistema de armas e progressão por níveis.
+
+O projeto foi desenvolvido em equipe como trabalho acadêmico, utilizando TypeScript e o framework Excalibur.js.
+
+## Funcionalidades
+
+**Legenda:** ✅ Implementado · 🚧 Em desenvolvimento · 📝 Planejado
 
 | Status | Funcionalidade |
-|:--:|---|
-| ✅ | Engine, cenas (Menu / Jogo / Game Over) e física top-down |
-| ✅ | Movimentação em 8 direções (WASD / setas) |
-| ✅ | Tiro do jogador com projéteis |
-| ✅ | Colisões (projétil × parede, projétil × inimigo, jogador × inimigo) |
-| ✅ | Robôs inimigos que perseguem o jogador |
-| 📝 | Ondas de inimigos (spawner) |
-| 📝 | Esquiva (**dodge roll**) com frames de invulnerabilidade |
-| 📝 | Chefe indestrutível estilo **Evil Otto** |
-| ✅ | HUD com vida e pontuação |
-| 📝 | Efeitos sonoros e partículas |
+|:---:|---|
+| ✅ | Engine Excalibur.js e gerenciamento de cenas (Menu, Jogo e Game Over) |
+| ✅ | Movimentação do jogador em 8 direções (WASD / setas) |
+| ✅ | Sistema de estados do jogador (idle, walk, hurt e dead) |
+| ✅ | Sistema de vida, dano e invulnerabilidade temporária (*i-frames*) |
+| ✅ | Dois modos de disparo: pistola normal e rajada (*burst*) |
+| ✅ | Mira direcionada pelo mouse e disparo de projéteis |
+| ✅ | Sistema de colisões entre jogador, inimigos, paredes e projéteis |
+| ✅ | Inimigos com diferentes variantes e comportamentos |
+| ✅ | IA de perseguição com busca de caminhos (*pathfinding / BFS*) |
+| ✅ | Disparos inimigos em 8 direções e verificação de linha de visão |
+| ✅ | Projéteis inimigos com detecção de paredes e proximidade do jogador |
+| ✅ | Chefe indestrutível Evil Otto, com espera, aviso e perseguição |
+| ✅ | Geração procedural de salas e labirintos com caminhos conectados |
+| ✅ | Portas que bloqueiam a saída até a eliminação dos inimigos |
+| ✅ | Portais e transição entre salas, com progressão de níveis |
+| ✅ | Sistema de inimigos por sala |
+| ✅ | Sistema de pontuação e HUD com vida, nível e pontuação |
+| ✅ | Pickups de coração e recuperação de vida a cada 3 níveis |
+| ✅ | Sprites pixel art e animações do jogador, inimigos e tochas |
+| ✅ | Efeitos sonoros para ações e eventos do jogo |
 
-## 🕹️ Controles
+## Controles
 
-| Ação | Tecla |
+| Ação | Tecla / Botão |
 |---|---|
-| Mover | `W` `A` `S` `D` ou setas |
-| Atirar | mouse esquerdo |
-| Esquivar (dodge roll) | A definir (ex.: `Espaço`) |
+| Movimentar | `W`, `A`, `S`, `D` ou setas |
+| Mirar | Mouse |
+| Atirar | Botão esquerdo do mouse |
+| Selecionar pistola normal | `1` |
+| Selecionar rajada | `2` |
 
----
+## Tecnologias utilizadas
 
-## 🛠️ Tecnologias
+- **[TypeScript](https://www.typescriptlang.org/)** — linguagem utilizada no desenvolvimento.
+- **[Excalibur.js](https://excaliburjs.com/)** — engine para jogos 2D em HTML5.
+- **[Vite](https://vite.dev/)** — ferramenta de desenvolvimento e build.
+- **HTML5** — plataforma de execução do jogo.
+- **Git e GitHub** — controle de versão e colaboração.
+- **GitHub Actions** — automação do processo de publicação.
+- **GitHub Pages** — hospedagem do jogo.
 
-- [Excalibur.js](https://excaliburjs.com/): engine de jogos 2D em TypeScript
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/): servidor de desenvolvimento e build
-- [GitHub Actions](https://docs.github.com/actions) + [GitHub Pages](https://pages.github.com/): deploy automático
+## Como executar localmente
 
----
+### Pré-requisitos
 
-## 🚀 Como rodar localmente
+- [Node.js](https://nodejs.org/) — versão 20 ou compatível.
+- npm (instalado junto com o Node.js).
+- Git.
 
-**Pré-requisitos:** [Node.js](https://nodejs.org/) 18 ou superior e Git.
+### Instalação
 
-```bash
-# 1. Clonar
-git clone https://github.com/nickyrzzdev/snoopyscape.git
-cd snoopyscape
+1. Clone o repositório:
 
-# 2. Instalar dependências
-npm install
+   ```bash
+   git clone https://github.com/nickyrzzdev/snoopyscape.git
+   ```
 
-# 3. Rodar em modo desenvolvimento
-npm run dev
+2. Entre na pasta do projeto:
 
-# 4. Gerar o build de produção (pasta dist/)
-npm run build
-```
+   ```bash
+   cd snoopyscape
+   ```
 
-Depois do `npm run dev`, abra o endereço mostrado no terminal (normalmente `http://localhost:5173`).
+3. Instale as dependências:
 
----
+   ```bash
+   npm install
+   ```
 
-## 📁 Estrutura de pastas
+4. Inicie o servidor de desenvolvimento:
 
-```
-.
-├── public/
-│   └── assets/          # sprites, sons e demais arquivos estáticos
-├── src/
-│   ├── actors/          # Player, Enemy, Bullet, Boss...
-│   ├── scenes/          # MenuScene, GameScene, GameOverScene
-│   ├── config/          # constantes (velocidades, cooldowns, grupos de colisão)
-│   ├── ui/              # HUD
-│   └── main.ts          # ponto de entrada (Engine)
+   ```bash
+   npm run dev
+   ```
+
+5. Acesse o endereço local exibido no terminal.
+
+### Outros comandos
+
+| Comando | Descrição |
+|---|---|
+| `npm run dev` | Inicia o servidor de desenvolvimento. |
+| `npm run build` | Verifica os tipos TypeScript e gera a versão de produção. |
+| `npm run preview` | Executa uma prévia local da versão compilada. |
+
+## Estrutura do projeto
+
+```text
+snoopyscape/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml   # deploy no GitHub Pages
+│       └── deploy.yml
+├── public/
+│   └── assets/
+├── src/
+│   ├── actors/
+│   ├── assets/
+│   ├── config/
+│   ├── input/
+│   ├── scenes/
+│   ├── systems/
+│   ├── ui/
+│   ├── weapons/
+│   ├── world/
+│   ├── main.ts
+│   └── sounds.ts
 ├── index.html
 ├── package.json
+├── package-lock.json
 ├── tsconfig.json
-└── vite.config.ts
+├── vite.config.ts
+└── README.md
 ```
 
+## Equipe
+
+O projeto foi desenvolvido colaborativamente por três integrantes:
+
+| Integrante | Responsabilidades |
+|---|---|
+| **Nicole** | Liderança técnica, gerenciamento da Engine e das cenas, física, máquina de estados, integração do chefe, repositório, CI/CD e revisão de Pull Requests. |
+| **Erick** | Sistema de disparos e projéteis, colisões, inteligência artificial de perseguição, geração de inimigos e efeitos sonoros. |
+| **Gabriel** | Sistema de movimentação e entrada, HUD, carregamento de assets, sprites e implementação dos sistemas de armas e pickups. |
+
+*As responsabilidades representam a divisão geral do trabalho. Algumas funcionalidades tiveram contribuições de mais de um integrante.*
+
+## Fluxo de trabalho com Git
+
+Para manter a organização do desenvolvimento em equipe, o projeto utiliza branches e Pull Requests.
+
+**Regras de colaboração:**
+
+- Não realizar commits diretamente na branch `main`.
+- Criar uma branch específica para cada funcionalidade ou correção.
+- Enviar as alterações por Pull Request.
+- Solicitar revisão antes de integrar as alterações à `main`.
+- Resolver conflitos antes do merge.
+
+### Padrão de branches
+
+| Prefixo | Utilização |
+|---|---|
+| `feat/` | Nova funcionalidade |
+| `fix/` | Correção de bugs |
+| `refactor/` | Refatoração |
+| `docs/` | Documentação |
+| `chore/` | Configurações e manutenção |
+
+### Exemplos de comandos
+
+```bash
+# Atualizar a main
+git switch main
+git pull origin main
+
+# Criar uma nova branch
+git switch -c feat/nome-da-funcionalidade
+
+# Adicionar alterações
+git add .
+
+# Criar commit
+git commit -m "feat: descrição da alteração"
+
+# Enviar branch para o GitHub
+git push -u origin feat/nome-da-funcionalidade
+```
+
+Após o envio, abra um Pull Request para a branch `main`.
+
+## Deploy
+
+O projeto utiliza **GitHub Actions** para automatizar a publicação no GitHub Pages.
+
+O processo acontece quando há um push na branch `main` ou quando o workflow é executado manualmente.
+
+As etapas são:
+
+1. Instalação das dependências com `npm ci`.
+2. Compilação do projeto com `npm run build`.
+3. Geração dos arquivos de produção na pasta `dist/`.
+4. Publicação dos arquivos no GitHub Pages.
+
+O Vite utiliza o caminho base `/snoopyscape/` para garantir que os recursos sejam carregados corretamente no endereço de publicação.
+
+🔗 **[Acessar o jogo](https://nickyrzzdev.github.io/snoopyscape/)**
+
+## Referências
+
+- [Excalibur.js — Documentação oficial](https://excaliburjs.com/)
+- [TypeScript — Documentação oficial](https://www.typescriptlang.org/docs/)
+- [Vite — Documentação oficial](https://vite.dev/guide/)
+- [GitHub Actions — Documentação](https://docs.github.com/en/actions)
+- [GitHub Pages — Documentação](https://docs.github.com/en/pages)
+
 ---
 
-## 👥 Equipe e divisão de tarefas
-
-| Integrante | Papel | Responsabilidades |
-|---|---|---|
-| **Nicole** | Líder do projeto (complexidade alta) | Engine/Scenes/Physics, máquina de estados e dodge roll, IA do chefe, repositório, CI/CD e revisão de PRs |
-| **Erick** | Desenvolvedor (complexidade média) | Tiro e projéteis, colisões, IA de perseguição, spawner de ondas, efeitos sonoros e partículas |
-| **Gabriel** | Desenvolvedor (complexidade fácil) | Entrada do jogador, movimentação, HUD, carregamento de assets e organização do GitHub Projects |
-
-O acompanhamento das tarefas é feito no **GitHub Projects** do repositório (colunas *To Do*, *In Progress* e *Done*).
-
----
-
-## 🔀 Fluxo de trabalho com Git
-
-> ## 🚨 É PROIBIDO fazer commit direto na branch `main`.
-> Todo código entra por **branch → Pull Request → revisão → merge**.
-
-1. Atualize a `main`: `git checkout main && git pull origin main`
-2. Crie sua branch: `git checkout -b feat/nome-da-tarefa`
-3. Faça commits pequenos e claros: `git commit -m "feat: descreve o que foi feito"`
-4. Envie a branch: `git push -u origin feat/nome-da-tarefa`
-5. Abra um **Pull Request**, vincule a issue (`Closes #número`) e marque a **Nicole** como revisora
-6. Após a aprovação e o merge, apague a branch e comece a próxima tarefa
-
-**Prefixos de branch:** `feat/` (funcionalidade) · `fix/` (correção) · `ci/` (pipeline) · `docs/` (documentação)
-
-**Prefixos de commit:** `feat:` · `fix:` · `chore:` · `docs:`
-
-Antes de abrir o PR, rode `npm run build` para garantir que o projeto compila.
-
----
-
-## 🌐 Deploy
-
-O deploy é automático: a cada merge na `main`, o **GitHub Actions** faz o build e publica no **GitHub Pages**.
-
-> No `vite.config.ts`, mantenha `base: '/snoopyscape/'` para os assets carregarem corretamente no Pages.
-
----
-
-## 📚 Referências
-
-- [Documentação do Excalibur.js](https://excaliburjs.com/docs)
-- [Documentação do Vite](https://vitejs.dev/guide/)
-- [GitHub Pages](https://docs.github.com/pages)
-- [GitHub Projects](https://docs.github.com/issues/planning-and-tracking-with-projects)
+<p align="center">
+  Desenvolvido por Nicole, Erick e Gabriel.
+</p>
